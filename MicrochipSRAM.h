@@ -9,7 +9,7 @@
 **                                                                                                                **
 ** The memory has 3 operating modes: byte, (32-byte) Page and sequential. All read or write command are started   **
 ** by pulling the SPI CS/SS pin low and sending 2 or 3 address bytes (depending upon which memory is being used)  **
-** and then either the data is sent to the memory or read from it starting at that address.  The default power-on **
+** and then either the data is sent to the memory or read from it starting at that addessr.  The default power-on **
 ** mode is the byte mode, where only one byte is transmitted. The next mode, page, will transmit data within the  **
 ** 32-Byte page, wrapping around to the beginning of the page when the end is reached. The last mode, sequential, **
 ** ignores page boundaries and reads/writes sequentially until the last memory position is reached, whereupon it  **
@@ -33,6 +33,7 @@
 **                                                                                                                **
 ** Vers.  Date       Developer           Comments                                                                 **
 ** ====== ========== =================== ======================================================================== **
+** 1.0.1  2016-11-19 Arnd@SV-Zanshin.Com Added method "clearMemory"                                               **
 ** 1.0.0  2016-11-19 Arnd@SV-Zanshin.Com Cleaned up, published  https://github.com/SV-Zanshin/MicrochipSRAM       **
 ** 1.0.b1 2016-11-19 Arnd@SV-Zanshin.Com Created class                                                            **
 **                                                                                                                **
@@ -60,10 +61,11 @@
     public:                                                                   // Publicly visible methods         //
       MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes);                // Class constructor                //
       ~MicrochipSRAM();                                                       // Class destructor                 //
+      clearMemory(const uint8_t clearValue = 0);                              // Clear all memory to one value    //
       /*************************************************************************************************************
       ** Declare the get and put methods as template functions here in the header file. This allows any type of   **
       ** variable or structure to be used rather than having to make one function for each datatype used. Note    **
-      ** that due to the sequential mode being active, reads and writes that go past the last existing addr    **
+      ** that due to the sequential mode being active, reads and writes that go past the last existing address    **
       ** will automatically wrap back to the beginning of the memory                                              **
       *************************************************************************************************************/
       template< typename T > uint32_t &get(const uint32_t addr,T &value) {    // method to write a structure      //

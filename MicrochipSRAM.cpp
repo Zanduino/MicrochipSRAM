@@ -1,5 +1,6 @@
 /*******************************************************************************************************************
-** MicrochipSRAM class method definitions. Most of the actual work is defined in templates found in the header    **
+** MicrochipSRAM class method definitions. Most of the actual work is defined in templates found in the header,   **
+** but there is one method, clearMemory(), which is defined in this file apart from the constuctor                **
 **                                                                                                                **
 ** This program is free software: you can redistribute it and/or modify it under the terms of the GNU General     **
 ** Public License as published by the Free Software Foundation, either version 3 of the License, or (at your      **
@@ -25,38 +26,38 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes)        //
   if (SRAMBytes == 0) {                                                       // Detect if the size wasn't given  //
     /***************************************************************************************************************
     ** Firstly set the first 0x4 memory positions to 0, this can be done without knowing the memory type. Then    **
-    ** send 4 bytes: 0x0, 0x0, 0x1, 0xFF in write mode. If the chip uses 2 addr bytes, then 0x1 is written to  **
-    ** the first and 0xFF to the second memory position. If the chip uses 3 addr bytes then 0xFF is written to **
-    ** addr 0x1 and the first memory position will be zero. If we assume a 3 addr byte memory and read the  **
-    ** first position and get a value of 0xFF then we've got a positive 1mBit id, otherwise we continue searching.** 
+    ** send 4 bytes: 0x0, 0x0, 0x1, 0xFF in write mode. If the chip uses 2 address bytes, then 0x1 is written to  **
+    ** the first and 0xFF to the second memory position. If the chip uses 3 address bytes then 0xFF is written to **
+    ** address 0x1 and the first memory position will be zero. If we assume a 3 address byte memory and read the  **
+    ** first position and get a value of 0xFF then we've got a positive 1mBit id, otherwise we continue searching.**
     ***************************************************************************************************************/
     digitalWrite(_SSPin,LOW);                                                 // Select by pulling CS low         //
     SPI.transfer(SRAM_WRITE_CODE);                                            // Send the command for WRITE mode  //
-    for (uint8_t i=0;i<4;i++) SPI.transfer(0x00);                             // Write zeros for addr & data   //
+    for (uint8_t i=0;i<4;i++) SPI.transfer(0x00);                             // Write zeros for address & data   //
     digitalWrite(_SSPin,HIGH);                                                // Deselect by pulling CS high      //
     digitalWrite(_SSPin,LOW);                                                 // Select by pulling CS low         //
     SPI.transfer(SRAM_WRITE_CODE);                                            // Send the command for WRITE mode  //
-    SPI.transfer(0x00);                                                       // Send the 1st addr byte        //
-    SPI.transfer(0x00);                                                       // Send the 2nd addr byte        //
-    SPI.transfer(0x01);                                                       // LSB of addr -or- 1st data byte//
+    SPI.transfer(0x00);                                                       // Send the 1st address byte        //
+    SPI.transfer(0x00);                                                       // Send the 2nd address byte        //
+    SPI.transfer(0x01);                                                       // LSB of address or 1st data byte  //
     SPI.transfer(0xFF);                                                       // 1st or 2nd data byte             //
     digitalWrite(_SSPin,HIGH);                                                // Deselect by pulling CS high      //
     digitalWrite(_SSPin,LOW);                                                 // Select by pulling CS low         //
     SPI.transfer(SRAM_READ_CODE);                                             // Send the command for WRITE mode  //
-    SPI.transfer(0x00);                                                       // Send the 1st addr byte        //
-    SPI.transfer(0x00);                                                       // Send the 2nd addr byte        //
+    SPI.transfer(0x00);                                                       // Send the 1st address byte        //
+    SPI.transfer(0x00);                                                       // Send the 2nd address byte        //
     SPI.transfer(0x01);                                                       // 1st or 2nd data byte             //
     SRAMBytes = SPI.transfer(0x00);                                           // Read 1 byte from the memory      //
     digitalWrite(_SSPin,HIGH);                                                // Deselect by pulling CS high      //
     if (SRAMBytes==0xFF) SRAMBytes = SRAM_1024;                               // Set the memory size to 128KB     //
     else {                                                                    // Otherwise keep on identifying    //
       /*************************************************************************************************************
-      ** Now that we know that we have a 2-byte addrable memory chip, write 2 bytes to the potentially last    **
+      ** Now that we know that we have a 2-byte addressable memory chip, write 2 bytes to the potentially last    **
       ** byte of the memory chip. Then read the first byte, if it contains the value we've just written then we   **
       ** know that on overflow has occurred and therefore know the chip size. If the first byte is still 0, go to **
       ** the next memory chip size until we've determined the chip; if we haven't gotten it then odds are that    **
       ** there's no memory chip attached or the CS/SS pin is incorrect - return a 0 to denote this problem        **
-      *************************************************************************************************************/      
+      *************************************************************************************************************/
       uint8_t i = 0;                                                          // Placeholder variable             //
       put(0,0x00);                                                            // Write zeros to bytes 1 & 2       //
       put(SRAM_64-1,0xFF);                                                    // Put 0xF at last & last+1 position//
@@ -75,10 +76,22 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes)        //
         } // of if-then else we don't have a 128kbit chip                     //                                  //
       } // of if-then else we don't have a 64kbit chip                        //                                  //
     } // of if-then-else we have a positive 1mbit ID                          //                                  //
-  } // of if-then the size was specified by caller                            //                                  //  
+  } // of if-then the size was specified by caller                            //                                  //
   _SRAMBytes = SRAMBytes;                                                     // Store value in private space     //
 } // of class constructor                                                     //----------------------------------//
 /*******************************************************************************************************************
 ** Class Destructor currently does nothing and is included for compatibility purposes                             **
 *******************************************************************************************************************/
 MicrochipSRAM::~MicrochipSRAM() {} // of unused class destructor              //                                  //
+/*******************************************************************************************************************
+** Method clearMemory to set all memory positions to the same value. Added v1.0.1.                                **
+*******************************************************************************************************************/
+void clearMemory(const uint8_t clearValue = 0) {                              // Clear all memory to one value    //
+  digitalWrite(_SSPin,LOW);                                                   // Select by pulling CS low         //
+  SPI.transfer(SRAM_WRITE_CODE);                                              // Send the command for WRITE mode  //
+  if (_SRAM_BYTES==SRAM_1024) SPI.transfer(0x00);                             // Send 3rd address when required   //
+  SPI.transfer(0x00);                                                         // Send address data 0x00 value     //
+  SPI.transfer(0x00);                                                         // Send address data 0x00 value     //
+  for (uint32_t=0;i<_SRAM_BYTES) SPI.transfer(clearValue);                    // Fill memory with given value     //
+  digitalWrite(_SSPin,HIGH);                                                  // Deselect by pulling CS high      //
+} // of method ClearMemory                                                    //----------------------------------//
