@@ -9,4 +9,4 @@ The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this
 * 23LCV512	(512kbit)
 * 23LCV1024	(1024kbit)
 
-![Zanshin Logo]/Images/gif/zanshincalligraphy.gif
+![Zanshin Logo]/Images/zanshincalligraphy.gif
