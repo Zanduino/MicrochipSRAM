@@ -57,6 +57,8 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes)        //
       ** know that on overflow has occurred and therefore know the chip size. If the first byte is still 0, go to **
       ** the next memory chip size until we've determined the chip; if we haven't gotten it then odds are that    **
       ** there's no memory chip attached or the CS/SS pin is incorrect - return a 0 to denote this problem        **
+	  ** Note - at the time of writing there is no Microchip 128kbit chip, but the code is left in for future     **
+	  ** compatibility.                                                                                           **
       *************************************************************************************************************/
       uint8_t i = 0;                                                          // Placeholder variable             //
       put(0,0x00);                                                            // Write zeros to bytes 1 & 2       //
@@ -64,14 +66,14 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes)        //
       if (get(0,i)==0xF) SRAMBytes = SRAM_64;                                 // We've found a 64kbit memory chip //
       else {                                                                  // otherwise check next bigger chip //
         put(SRAM_128-1,0xFF);                                                 // Put 0xF at last & last+1 position//
-        if (get(0,i)==0xF) SRAMBytes = SRAM_128;                              // We've found a 128bit memory chip //
+        if (get(0,i)==0xF) SRAMBytes = SRAM_128;                              // We've found a 128kbit memory chip//
         else {                                                                // otherwise check next bigger size //
           put(SRAM_256-1,0xFF);                                               // Put 0xF at last & last+1 position//
-          if (get(0,i)==0xF) SRAMBytes = SRAM_256;                            // We've found a 128bit memory chip //
+          if (get(0,i)==0xF) SRAMBytes = SRAM_256;                            // We've found a 256kbit memory chip//
           else {                                                              // otherwise check next bigger size //
             put(SRAM_512-1,0xFF);                                             // Put 0xF at last & last+1 position//
-            if (get(0,i)==0xF) SRAMBytes = SRAM_512;                          // We've found a 128bit memory chip //
-            else SRAMBytes = 0;                                               // Otherwise no chip has been found //
+            if (get(0,i)==0xF) SRAMBytes = SRAM_512;                          // We've found a 512kbit memory chip//
+                          else SRAMBytes = 0;                                 // Otherwise no chip has been found //
           } // of if-then-else we don't have a 256kbit chip                   //                                  //
         } // of if-then else we don't have a 128kbit chip                     //                                  //
       } // of if-then else we don't have a 64kbit chip                        //                                  //

@@ -24,6 +24,11 @@
 ** wraparound and have determined the memory size. If the first byte hasn't changed, then the actual memory has   **
 ** to be a larger one, and the next possible size is tested                                                       **
 **                                                                                                                **
+** Although programming for the Arduino and in c/c++ is new to me, I'm a professional programmer and have learned,**
+** over the years, that it is much easier to ignore superfluous comments than it is to decipher non-existent ones;**
+** so both my comments and variable names tend to be verbose. The code is written to fit in the first 80 spaces   **
+** and the comments start after that and go to column 117 - allowing the code to be printed in A4 landscape mode. **
+**                                                                                                                **
 ** This program is free software: you can redistribute it and/or modify it under the terms of the GNU General     **
 ** Public License as published by the Free Software Foundation, either version 3 of the License, or (at your      **
 ** option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY     **
@@ -61,7 +66,7 @@
     public:                                                                   // Publicly visible methods         //
       MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes);                // Class constructor                //
       ~MicrochipSRAM();                                                       // Class destructor                 //
-      clearMemory(const uint8_t clearValue = 0);                              // Clear all memory to one value    //
+      void clearMemory(const uint8_t clearValue = 0);                         // Clear all memory to one value    //
       /*************************************************************************************************************
       ** Declare the get and put methods as template functions here in the header file. This allows any type of   **
       ** variable or structure to be used rather than having to make one function for each datatype used. Note    **
