@@ -38,16 +38,16 @@
 **                                                                                                                **
 ** Vers.  Date       Developer           Comments                                                                 **
 ** ====== ========== =================== ======================================================================== **
+** 1.0.2  2016-11-20 Arnd@SV-Zanshin.Com Changed constructor to only use CS/SS pin, moved "SRAMBytes" to public   **
 ** 1.0.1  2016-11-19 Arnd@SV-Zanshin.Com Added method "clearMemory"                                               **
 ** 1.0.0  2016-11-19 Arnd@SV-Zanshin.Com Cleaned up, published  https://github.com/SV-Zanshin/MicrochipSRAM       **
-** 1.0.b1 2016-11-19 Arnd@SV-Zanshin.Com Created class                                                            **
+** 1.0.b1 2016-11-16 Arnd@SV-Zanshin.Com Created class                                                            **
 **                                                                                                                **
 *******************************************************************************************************************/
 #include "Arduino.h"                                                          // Arduino data type definitions    //
 #include <SPI.h>                                                              // SPI (Serial Peripheral Interface)//
 #ifndef MicrochipSRAM_h                                                       // Guard code definition            //
   #define MicrochipSRAM_h                                                     // Define the name inside guard code//
-  class MicrochipSRAM {                                                       // Class definition                 //
     /***************************************************************************************************************
     ** Declare constants used in the class                                                                        **
     ***************************************************************************************************************/
@@ -63,8 +63,9 @@
     const uint32_t SRAM_64             =      8192;                           // Equates to 64kbit of storage     //
     const uint8_t  SRAM_WRITE_CODE     =         2;                           // Write                            //
     const uint8_t  SRAM_READ_CODE      =         3;                           // Read                             //
+  class MicrochipSRAM {                                                       // Class definition                 //
     public:                                                                   // Publicly visible methods         //
-      MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes);                // Class constructor                //
+      MicrochipSRAM(const uint8_t SSPin);                                     // Class constructor                //
       ~MicrochipSRAM();                                                       // Class destructor                 //
       void clearMemory(const uint8_t clearValue = 0);                         // Clear all memory to one value    //
       /*************************************************************************************************************
@@ -75,10 +76,10 @@
       *************************************************************************************************************/
       template< typename T > uint32_t &get(const uint32_t addr,T &value) {    // method to write a structure      //
         uint8_t* bytePtr       = (uint8_t*)&value;                            // Pointer to structure beginning   //
-        uint32_t returnAddress = (addr+sizeof(T))%_SRAMBytes;                 // compute the return address       //
+        uint32_t returnAddress = (addr+sizeof(T))%SRAMBytes;                  // compute the return address       //
         digitalWrite(_SSPin,LOW);                                             // Pull CS/SS low to select device  //
         SPI.transfer(SRAM_READ_CODE);                                         // Send the command for WRITE mode  //
-        if (_SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF);    // Send the MSB of the 24bit address//
+        if (SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF);     // Send the MSB of the 24bit address//
         SPI.transfer((uint8_t)(addr>>8) & 0xFF);                              // Send the 2nd byte of the address //
         SPI.transfer((uint8_t)addr);                                          // Send the LSB of the address      //
         for (uint32_t i=0;i<sizeof(T);i++) *bytePtr++ = SPI.transfer(0x00);   // loop for each byte to be read    //
@@ -87,10 +88,10 @@
       } // of method get                                                      //----------------------------------//
       template<typename T> uint32_t &put(const uint32_t addr,const T &value){ // method to get a structure        //
         const uint8_t* bytePtr = (const uint8_t*)&value;                      // Pointer to structure beginning   //
-        uint32_t returnAddress = (addr+sizeof(T))%_SRAMBytes;                 // compute the return address       //
+        uint32_t returnAddress = (addr+sizeof(T))%SRAMBytes;                  // compute the return address       //
         digitalWrite(_SSPin,LOW);                                             // Pull CS/SS low to select device  //
         SPI.transfer(SRAM_WRITE_CODE);                                        // Send the command for WRITE mode  //
-        if (_SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF);    // Send the MSB of the 24bit address//
+        if (SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF);     // Send the MSB of the 24bit address//
         SPI.transfer((uint8_t)(addr>>8) & 0xFF);                              // Send the 2nd byte of the address //
         SPI.transfer((uint8_t)addr);                                          // Send the LSB of the address      //
         for (uint32_t i=0;i<sizeof(T);i++) SPI.transfer(*bytePtr++);          // loop for each byte to be written //
@@ -98,10 +99,10 @@
         return(returnAddress);                                                // Return the computed new address  //
       } // of method put                                                      //----------------------------------//
       template< typename T > &fillMemory( uint32_t addr, T &value ) {         // method to fill memory with values//
-        while(addr<(_SRAMBytes-sizeof(T))) addr = put(addr,value);            // loop until we reach end of memory//
+        while(addr<(SRAMBytes-sizeof(T))) addr = put(addr,value);             // loop until we reach end of memory//
       } // of method fillMemory                                               //----------------------------------//
+      uint32_t SRAMBytes = 0;                                                 // Number of bytes available on chip//
     private:                                                                  // Private variables and methods    //
       uint8_t  _SSPin     = 0;                                                // The CS/SS pin attached           //
-      uint32_t _SRAMBytes = 0;                                                // Number of bytes available on chip//
   }; // of MicrochipSRAM class definition                                     //                                  //
 #endif                                                                        //----------------------------------//

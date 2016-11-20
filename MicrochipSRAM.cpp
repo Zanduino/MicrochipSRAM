@@ -14,8 +14,7 @@
 /*******************************************************************************************************************
 ** Class Constructor instantiates the class                                                                       **
 *******************************************************************************************************************/
-MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes)        // CONSTRUCTOR - Instantiate class  //
-   : _SSPin(SSPin) {                                                          // Privately store the pin number   //
+MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin) : _SSPin(SSPin) {           // CONSTRUCTOR - Instantiate class  //
   pinMode(_SSPin,OUTPUT);                                                     // Define the CS/SS pin SPI I/O     //
   digitalWrite(_SSPin,HIGH);                                                  // Deselect by pulling CS pin high  //
   SPI.begin();                                                                // Start SPI                        //
@@ -79,7 +78,6 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin, uint32_t &SRAMBytes)        //
       } // of if-then else we don't have a 64kbit chip                        //                                  //
     } // of if-then-else we have a positive 1mbit ID                          //                                  //
   } // of if-then the size was specified by caller                            //                                  //
-  _SRAMBytes = SRAMBytes;                                                     // Store value in private space     //
 } // of class constructor                                                     //----------------------------------//
 /*******************************************************************************************************************
 ** Class Destructor currently does nothing and is included for compatibility purposes                             **
@@ -91,9 +89,9 @@ MicrochipSRAM::~MicrochipSRAM() {} // of unused class destructor              //
 void MicrochipSRAM::clearMemory(const uint8_t clearValue = 0) {               // Clear all memory to one value    //
   digitalWrite(_SSPin,LOW);                                                   // Select by pulling CS low         //
   SPI.transfer(SRAM_WRITE_CODE);                                              // Send the command for WRITE mode  //
-  if (_SRAMBytes==SRAM_1024) SPI.transfer(0x00);                              // Send 3rd address when required   //
+  if (SRAMBytes==SRAM_1024) SPI.transfer(0x00);                               // Send 3rd address when required   //
   SPI.transfer(0x00);                                                         // Send address data 0x00 value     //
   SPI.transfer(0x00);                                                         // Send address data 0x00 value     //
-  for (uint32_t i=0;i<_SRAMBytes;i++) SPI.transfer(clearValue);               // Fill memory with given value     //
+  for (uint32_t i=0;i<SRAMBytes;i++) SPI.transfer(clearValue);                // Fill memory with given value     //
   digitalWrite(_SSPin,HIGH);                                                  // Deselect by pulling CS high      //
 } // of method ClearMemory                                                    //----------------------------------//
