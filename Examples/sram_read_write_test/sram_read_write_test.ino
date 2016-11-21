@@ -28,8 +28,7 @@
 *******************************************************************************************************************/
 #include <MicrochipSRAM.h>                                                    // Include the library              //
 #define SRAM_SS_PIN 2                                                         // Pin 2 for SPI.Change if necessary//
-uint32_t memorySize = 0;                                                      // Holds the computed memory size   //
-static MicrochipSRAM memory(SRAM_SS_PIN,memorySize);                          // Instantiate the memory class     //
+static MicrochipSRAM memory(SRAM_SS_PIN);                                     // Instantiate the memory class     //
                                                                               //----------------------------------//
 uint32_t address;
 char testArray[12] = "Hello World";
@@ -43,14 +42,14 @@ void setup() {                                                                //
   Serial.begin(9600);                                                         // Start serial comms at 9600 Baud  //
   delay(3000);                                                                // Some Atmels need time to start   //
   Serial.println("Starting Microchip SRAM test program");                     //                                  //
-  if (memorySize==0) {
+  if (memory.SRAMBytes==0) {
     Serial.print("- Error detecting SPI memory.\n");
     Serial.print(" - Either an incorrect SPI pin was specified,\n- or the ");
     Serial.print("Microchip memory has been wired incorrectly,\n- or it is");
     Serial.print("not a Microchip memory.\nSupported memories are:\n23x640");
     Serial.print(", 23x256, 23x512, 23xx1024, 23LCV512 & 23LCV1024");
   } else {
-    Serial.print("- A Microchip with ");Serial.print(memorySize);
+    Serial.print("- A Microchip with ");Serial.print(memory.SRAMBytes);
     Serial.print(" Bytes of memory has been detected.\n\n");
     Serial.print("Writing 4 consecutive arrays starting at 100:\n");
     address = 100;
