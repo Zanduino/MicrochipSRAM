@@ -27,4 +27,4 @@ The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this
 
 See the [Wiki](https://github.com/SV-Zanshin/MicrochipSRAM/wiki) pages for details of the class and the variables / functions accessible in it.
 
-![Zanshin Logo](https://www.sv-zanshin.com/images/gif/zanshincalligraphy.gif)
+![Zanshin Logo](https://www.sv-zanshin.com/images/gif/zanshinkanjitiny.gif) <img src="https://www.sv-zanshin.com/images/gif/zanshintext.gif" width="75"/>
