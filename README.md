@@ -4,8 +4,8 @@ The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this
 
 <table>
   <tr>
-    <td>Memory Type</td>
-    <td>Storage Bits</td>
+  <td><b>Memory Type</b></td>
+  <td><b>Storage Bits</b></td>
   </tr>
   <tr>
     <td>23x640</td>
