@@ -2,12 +2,28 @@
 *Arduino* library which defines methods for accessing any the Microchip SRAM and SNVRAM SPI family memory chips. The get() and put() methods allow any data type to be written with one call and the library automagically detects which of the possible memory chips is in use. 
 The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this library:
 
-* 23x640		(64kbit)
-* 23x256		(256kbit)
-* 23x512		(512kbit)
-* 23x1024		(1024kbit)
-* 23LCV512	(512kbit)
-* 23LCV1024	(1024kbit)
+<table>
+  <tr>
+    <td>Memory Type</td>
+    <td>Storage Bits</td>
+  </tr>
+  <tr>
+    <td>23x640</td>
+    <td>64 kbit</td>
+  </tr>
+  <tr>
+    <td>23x256</td>
+    <td>256 kbit</td>
+  </tr>
+  <tr>
+    <td>23x512<br>23LCV512</td>
+    <td>512 kbit</td>
+  </tr>
+  <tr>
+    <td>23x1024<br>23LCV1024</td>
+    <td>1024 kbit</td>
+  </tr>
+</table>
 
 See the [Wiki](https://github.com/SV-Zanshin/MicrochipSRAM/wiki) pages for details of the class and the variables / functions accessible in it.
 
