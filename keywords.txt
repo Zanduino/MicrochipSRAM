@@ -1,4 +1,6 @@
 Microchip	KEYWORD1
+Arduino         KEYWORD1
+Library         KEYWORD2
 SRAM		KEYWORD2
 23x640		KEYWORD2
 64Kbit		KEYWORD2
