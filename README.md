@@ -1,5 +1,5 @@
 # MicrochipSRAM library
-*Arduino* library which defines methods for accessing any the Microchip SRAM and SNVRAM SPI family memory chips. [Microchip](http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview) offers a number of volatile and nonvolatile memory chips that use the SPI protocol. These chips have an unlimited number of write cycles, so the programmer doesn't have to worry about load leveling and writing only pages/blocks at a time to avoid memory degradation. The memory is also fast enough so that the normal SPI speeds are slow enough so that no delays need to be introduced.
+*Arduino* library which defines methods for accessing any the Microchip SRAM and SNVRAM SPI family memory chips. [Microchip](http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview) offers a number of volatile and nonvolatile memory chips that use the SPI protocol. These chips have an unlimited number of write cycles, so the programmer doesn't have to worry about load leveling and writing only pages/blocks at a time to avoid memory degradation. The memory is also fast enough so that no delays need be introducedintroduced.
 
 This _Arduino_ library offers a number of methods that allow easy reading and writing to/from the memory as well as a method for detecting exactly which one of the supported memory chips is installed.
 
