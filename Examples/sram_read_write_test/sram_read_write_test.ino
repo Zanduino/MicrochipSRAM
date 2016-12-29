@@ -9,7 +9,7 @@
 **                                                                                                                **
 ** There are only 3 methods in the library:                                                                       **
 **                                                                                                                **
-** [optional uint32 return address] put ( address, {variable} )                                                   **
+** [optional uint32 return address] get ( address, {variable} )                                                   **
 ** [optional uint32 return address] put ( address, {variable} )                                                   **
 **                           fillMemory ( address, {variable} )                                                   **
 ** If the address is higher than the actual amount of memory bytes availabe it automatically overflows and starts **

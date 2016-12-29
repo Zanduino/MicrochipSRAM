@@ -103,6 +103,6 @@
       } // of method fillMemory                                               //----------------------------------//
       uint32_t SRAMBytes = 0;                                                 // Number of bytes available on chip//
     private:                                                                  // Private variables and methods    //
-      uint8_t  _SSPin     = 0;                                                // The CS/SS pin attached           //
+      uint8_t  _SSPin    = 0;                                                 // The CS/SS pin attached           //
   }; // of MicrochipSRAM class definition                                     //                                  //
 #endif                                                                        //----------------------------------//
