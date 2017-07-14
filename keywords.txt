@@ -1,15 +1,33 @@
-Microchip	KEYWORD1
-Arduino         KEYWORD1
-Library         KEYWORD2
-SRAM		KEYWORD2
-23x640		KEYWORD2
-64Kbit		KEYWORD2
-23x256		KEYWORD2
-256Kbit		KEYWORD2
-23x512		KEYWORD2
-512Kbit		KEYWORD2
-23x1024		KEYWORD2
-1mbit		KEYWORD2
-23LCV512	KEYWORD2
-23LCV1024	KEYWORD2
-SPI		KEYWORD2
+###################################
+# Syntax Coloring Map for library #
+###################################
+
+################################
+# Classes/Datatypes (KEYWORD1) #
+################################
+MicrochipSRAM	KEYWORD1
+
+####################################
+# Methods and Functions (KEYWORD2) #
+####################################
+clearMemory	KEYWORD2
+get			KEYWORD2
+put			KEYWORD2
+fillMemory	KEYWORD2
+
+########################
+# Constants (LITERAL1) #
+########################
+SRAMBytes			LITERAL1
+SRAM_WRITE_MODE_REG	LITERAL1
+SRAM_READ_MODE_REG	LITERAL1
+SRAM_BYTE_MODE		LITERAL1
+SRAM_PAGE_MODE		LITERAL1
+SRAM_SEQ_MODE		LITERAL1
+SRAM_1024			LITERAL1
+SRAM_512			LITERAL1
+SRAM_256			LITERAL1
+SRAM_128			LITERAL1
+SRAM_64				LITERAL1
+SRAM_WRITE_CODE		LITERAL1
+SRAM_READ_CODE		LITERAL1

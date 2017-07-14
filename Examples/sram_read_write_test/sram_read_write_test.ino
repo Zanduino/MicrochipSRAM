@@ -37,12 +37,12 @@ struct testStructType{
   char    textarray[12];
 };
 testStructType testStruct = {3.14159, "Hello World" };
-  
+                                                                              //----------------------------------//
 void setup() {                                                                // Arduino standard setup method    //
   Serial.begin(9600);                                                         // Start serial comms at 9600 Baud  //
   delay(3000);                                                                // Some Atmels need time to start   //
   Serial.println("Starting Microchip SRAM test program");                     //                                  //
-  if (memory.SRAMBytes==0) {
+  if (memory.SRAMBytes==0) {                                                  //----------------------------------//
     Serial.print("- Error detecting SPI memory.\n");
     Serial.print(" - Either an incorrect SPI pin was specified,\n- or the ");
     Serial.print("Microchip memory has been wired incorrectly,\n- or it is");

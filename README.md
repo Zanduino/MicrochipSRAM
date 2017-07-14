@@ -1,5 +1,5 @@
 # MicrochipSRAM library
-*Arduino* library which defines methods for accessing any the Microchip SRAM and SNVRAM SPI family memory chips. [Microchip](http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview) offers a number of volatile and nonvolatile memory chips that use the SPI protocol. One thing that differentiates these chips from others on the market is that they have an unlimited number of write cycles, so the programmer doesn't have to worry about load leveling and writing only pages/blocks at a time to avoid memory degradation. The memory is also fast enough so that no delays need be introduced when using SPI.
+<img src="https://github.com/SV-Zanshin/MicrochipSRAM/blob/master/Images/Microchip23LCV1024.jpg" width="175" align="right"/> *Arduino* library which defines methods for accessing any the Microchip SRAM and SNVRAM SPI family memory chips. [Microchip](http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview) offers a number of volatile and nonvolatile memory chips that use the SPI protocol. One thing that differentiates these chips from others on the market is that they have an unlimited number of write cycles, so the programmer doesn't have to worry about load leveling and writing only pages/blocks at a time to avoid memory hardware degradation or failure. The memory is also fast enough so that no delays need be introduced when using SPI.
 
 This _Arduino_ library offers a number of methods that allow easy reading and writing to/from the memory as well as a method for detecting exactly which one of the supported memory chips is installed.
 
@@ -33,6 +33,6 @@ The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this
   </tr>
 </table>
 
-See the [Wiki pages for details](https://github.com/SV-Zanshin/MicrochipSRAM/wiki) of the class and the variables / functions accessible in it.
+See the [Wiki pages](https://github.com/SV-Zanshin/MicrochipSRAM/wiki) for details of the class and the variables / functions accessible in it.
 
-![Zanshin Logo](https://www.sv-zanshin.com/images/gif/zanshinkanjitiny.gif) <img src="https://www.sv-zanshin.com/images/gif/zanshintext.gif" width="75"/>
+![Zanshin Logo](https://www.sv-zanshin.com/r/images/site/gif/zanshinkanjitiny.gif) <img src="https://www.sv-zanshin.com/r/images/site/gif/zanshintext.gif" width="75"/>
