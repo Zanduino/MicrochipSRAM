@@ -38,6 +38,8 @@
 **                                                                                                                **
 ** Vers.  Date       Developer           Comments                                                                 **
 ** ====== ========== =================== ======================================================================== **
+** 1.0.3  2017-07-31 Arnd@SV-Zanshin.Com Only function prototypes may contain default values / optional parameter **
+**                                       declarations, functions may not as this can cause compiler errors        **
 ** 1.0.2  2016-11-20 Arnd@SV-Zanshin.Com Changed constructor to only use CS/SS pin, moved "SRAMBytes" to public   **
 ** 1.0.1  2016-11-19 Arnd@SV-Zanshin.Com Added method "clearMemory"                                               **
 ** 1.0.0  2016-11-19 Arnd@SV-Zanshin.Com Cleaned up, published  https://github.com/SV-Zanshin/MicrochipSRAM       **

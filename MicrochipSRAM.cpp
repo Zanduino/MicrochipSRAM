@@ -86,7 +86,7 @@ MicrochipSRAM::~MicrochipSRAM() {} // of unused class destructor              //
 /*******************************************************************************************************************
 ** Method clearMemory to set all memory positions to the same value. Added v1.0.1.                                **
 *******************************************************************************************************************/
-void MicrochipSRAM::clearMemory(const uint8_t clearValue = 0) {               // Clear all memory to one value    //
+void MicrochipSRAM::clearMemory(const uint8_t clearValue ) {                  // Clear all memory to one value    //
   digitalWrite(_SSPin,LOW);                                                   // Select by pulling CS low         //
   SPI.transfer(SRAM_WRITE_CODE);                                              // Send the command for WRITE mode  //
   if (SRAMBytes==SRAM_1024) SPI.transfer(0x00);                               // Send 3rd address when required   //
