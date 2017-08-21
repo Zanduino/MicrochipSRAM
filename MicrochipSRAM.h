@@ -3,6 +3,10 @@
 ** Microchip family of Serial SRAM and Serial NVSRAM memory chips. The list can be found at Microchip's page      **
 ** at http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview.                          **
 **                                                                                                                **
+** The most recent version of the library is at https://github.com/SV-Zanshin/MicrochipSRAM/archive/master.zip,   **
+** the library and sample program descriptions can be found at https://github.com/SV-Zanshin/MicrochipSRAM        **
+**                                                                                                                **
+**                                                                                                                **
 ** At the time of coding this library, the following memories can be used: 23x640 (64Kbit), 23x256 (256Kbit),     **
 **                                                                                                                **
 ** 23x512 (512Kbit), 23xx1024 (1Mbit), 23LCV512 (512Kbit) and 23LCV1024 (1Mbit).                                  **

@@ -1,6 +1,9 @@
 /*******************************************************************************************************************
 ** MicrochipSRAM class method definitions. Most of the actual work is defined in templates found in the header,   **
-** but there is one method, clearMemory(), which is defined in this file apart from the constuctor                **
+** but there is one method, clearMemory(), which is defined in this file apart from the constructor               **
+**                                                                                                                **
+** The most recent version of the library is at https://github.com/SV-Zanshin/MicrochipSRAM/archive/master.zip,   **
+** the library and sample program descriptions can be found at https://github.com/SV-Zanshin/MicrochipSRAM        **
 **                                                                                                                **
 ** This program is free software: you can redistribute it and/or modify it under the terms of the GNU General     **
 ** Public License as published by the Free Software Foundation, either version 3 of the License, or (at your      **
@@ -56,8 +59,8 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin) : _SSPin(SSPin) {           //
       ** know that on overflow has occurred and therefore know the chip size. If the first byte is still 0, go to **
       ** the next memory chip size until we've determined the chip; if we haven't gotten it then odds are that    **
       ** there's no memory chip attached or the CS/SS pin is incorrect - return a 0 to denote this problem        **
-	  ** Note - at the time of writing there is no Microchip 128kbit chip, but the code is left in for future     **
-	  ** compatibility.                                                                                           **
+	    ** Note - at the time of writing there is no Microchip 128kbit chip, but the code is left in for future     **
+	    ** compatibility.                                                                                           **
       *************************************************************************************************************/
       uint8_t i = 0;                                                          // Placeholder variable             //
       put(0,0x00);                                                            // Write zeros to bytes 1 & 2       //
