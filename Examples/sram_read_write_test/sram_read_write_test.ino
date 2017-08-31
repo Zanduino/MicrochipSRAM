@@ -27,7 +27,7 @@
 ** along with this program.  If not, see <http://www.gnu.org/licenses/>.                                          **
 *******************************************************************************************************************/
 #include <MicrochipSRAM.h>                                                    // Include the library              //
-#define SRAM_SS_PIN 2                                                         // Pin 2 for SPI.Change if necessary//
+#define SRAM_SS_PIN A5                                                        // Pin 2 for SPI.Change if necessary//
 static MicrochipSRAM memory(SRAM_SS_PIN);                                     // Instantiate the memory class     //
                                                                               //----------------------------------//
 uint32_t address;
@@ -39,13 +39,15 @@ struct testStructType{
 testStructType testStruct = {3.14159, "Hello World" };
                                                                               //----------------------------------//
 void setup() {                                                                // Arduino standard setup method    //
-  Serial.begin(9600);                                                         // Start serial comms at 9600 Baud  //
-  delay(3000);                                                                // Some Atmels need time to start   //
+  Serial.begin(115200);                                                       // Start fast serial communications //
+  #ifdef  __AVR_ATmega32U4__                                                  // If this is a 32U4 processor, then//
+    delay(3000);                                                              // wait 3 seconds for the           //
+  #endif                                                                      // serial interface to initialize   //
   Serial.println("Starting Microchip SRAM test program");                     //                                  //
   if (memory.SRAMBytes==0) {                                                  //----------------------------------//
     Serial.print("- Error detecting SPI memory.\n");
     Serial.print(" - Either an incorrect SPI pin was specified,\n- or the ");
-    Serial.print("Microchip memory has been wired incorrectly,\n- or it is");
+    Serial.print("Microchip memory has been wired incorrectly,\n- or it is ");
     Serial.print("not a Microchip memory.\nSupported memories are:\n23x640");
     Serial.print(", 23x256, 23x512, 23xx1024, 23LCV512 & 23LCV1024");
   } else {
