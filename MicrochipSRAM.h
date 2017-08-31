@@ -40,14 +40,15 @@
 ** GNU General Public License for more details. You should have received a copy of the GNU General Public License **
 ** along with this program.  If not, see <http://www.gnu.org/licenses/>.                                          **
 **                                                                                                                **
-** Vers.  Date       Developer           Comments                                                                 **
-** ====== ========== =================== ======================================================================== **
-** 1.0.3  2017-07-31 Arnd@SV-Zanshin.Com Only function prototypes may contain default values / optional parameter **
-**                                       declarations, functions may not as this can cause compiler errors        **
-** 1.0.2  2016-11-20 Arnd@SV-Zanshin.Com Changed constructor to only use CS/SS pin, moved "SRAMBytes" to public   **
-** 1.0.1  2016-11-19 Arnd@SV-Zanshin.Com Added method "clearMemory"                                               **
-** 1.0.0  2016-11-19 Arnd@SV-Zanshin.Com Cleaned up, published  https://github.com/SV-Zanshin/MicrochipSRAM       **
-** 1.0.b1 2016-11-16 Arnd@SV-Zanshin.Com Created class                                                            **
+** Vers.  Date       Developer                     Comments                                                       **
+** ====== ========== ============================= ============================================================== **
+** 1.0.3  2017-07-31 https://github.com/SV-Zanshin Only function prototypes may contain default values / optional **
+**                                                 parameter declarations, functions may not as this can cause    **
+**                                                 compiler errors                                                **
+** 1.0.2  2016-11-20 https://github.com/SV-Zanshin Constructor uses CS/SS pin, made "SRAMBytes" public            **
+** 1.0.1  2016-11-19 https://github.com/SV-Zanshin Added method "clearMemory"                                     **
+** 1.0.0  2016-11-19 https://github.com/SV-Zanshin Cleaned up, https://github.com/SV-Zanshin/MicrochipSRAM        **
+** 1.0.b1 2016-11-16 https://github.com/SV-Zanshin Created class                                                  **
 **                                                                                                                **
 *******************************************************************************************************************/
 #include "Arduino.h"                                                          // Arduino data type definitions    //
