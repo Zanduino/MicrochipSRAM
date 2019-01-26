@@ -21,7 +21,7 @@ at 32767 then byte 0 of the array is overwritten. Get and Put will word wrap fro
 fillMemory will place identical copies of the {variable} starting at the memory position specified to the end of 
 memory. Any partial entry at the end of memory will not be filled.
 
-@section license GNU General Public License v3.0
+@section sram_read_write_testlicense GNU General Public License v3.0
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General
 Public License as published by the Free Software Foundation, either version 3 of the License, or (at your
 option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY
