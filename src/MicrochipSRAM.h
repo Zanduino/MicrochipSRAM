@@ -47,7 +47,8 @@ Written by Arnd\@SV-Zanshin
 
 Version| Date       | Developer                     | Comments
 ------ | ---------- | ----------------------------- | --------
-1.0.4  | 2019-01-26 | https://github.com/SV-Zanshin | Issue #11 - converted documentation to doxygen
+1.0.5  | 2019-01-26 | https://github.com/SV-Zanshin | Issue #11 - converted documentation to doxygen
+1.0.4  | 2018-06-25 | https://github.com/SV-Zanshin | Minor changes
 1.0.3  | 2017-07-31 | https://github.com/SV-Zanshin | Only function prototypes may contain default values / optional
                                                       parameter declarations, functions may not as this can cause
                                                       compiler errors
