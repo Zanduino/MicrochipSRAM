@@ -141,9 +141,10 @@ Version| Date       | Developer                     | Comments
           @param[in] addr Memory address to start filling at
           @param[in] value Data Type "T" to read
       */
-      template< typename T > uint8_t &fillMemory( uint32_t addr, T &value ) 
+      template< typename T > uint32_t &fillMemory( uint32_t addr, T &value ) 
       {
         while(addr<(SRAMBytes-sizeof(T))) addr = put(addr,value); // loop until we reach end of memory
+        return(addr);
       } // of method fillMemory()
       uint32_t SRAMBytes = 0; ///< Number of bytes available on chip//
     private:
