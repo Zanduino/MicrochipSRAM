@@ -102,8 +102,9 @@ Version| Date       | Developer                     | Comments
       */
       template< typename T > uint32_t &get(const uint32_t addr,T &value) 
       {
+        static uint32_t returnAddress;
         uint8_t* bytePtr       = (uint8_t*)&value;                          // Pointer to structure beginning
-        uint32_t returnAddress = (addr+sizeof(T))%SRAMBytes;                // compute the return address
+        returnAddress = (addr+sizeof(T))%SRAMBytes;                         // compute the return address
         digitalWrite(_SSPin,LOW);                                           // Pull CS/SS low to select device
         SPI.transfer(SRAM_READ_CODE);                                       // Send the command for WRITE mode
         if (SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF);   // Send the MSB of the 24bit address
@@ -123,8 +124,9 @@ Version| Date       | Developer                     | Comments
       */
       template<typename T> uint32_t &put(const uint32_t addr,const T &value)
       {
+        static uint32_t returnAddress;
         const uint8_t* bytePtr = (const uint8_t*)&value;                  // Pointer to structure beginning
-        uint32_t returnAddress = (addr+sizeof(T))%SRAMBytes;              // compute the return address
+        returnAddress = (addr+sizeof(T))%SRAMBytes;                       // compute the return address
         digitalWrite(_SSPin,LOW);                                         // Pull CS/SS low to select device
         SPI.transfer(SRAM_WRITE_CODE);                                    // Send the command for WRITE mode
         if (SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF); // Send the MSB of the 24bit address

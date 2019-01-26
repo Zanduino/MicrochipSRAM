@@ -42,7 +42,7 @@ Version| Date       | Developer           | Comments
 
 */
 #include <MicrochipSRAM.h>                // Include the library
-#define SRAM_SS_PIN A5                    // Pin 2 for SPI. Change if necessary
+#define SRAM_SS_PIN 18                    // Pin for SPI. Change if necessary
 static MicrochipSRAM memory(SRAM_SS_PIN); // Instantiate the class
 
 uint32_t address;                    ///< Memory address variable
