@@ -42,7 +42,7 @@ Version| Date       | Developer           | Comments
 
 */
 #include <MicrochipSRAM.h>                // Include the library
-const uint8_t SRAM_SS_PIN 18              // Pin for SPI. Change if necessary
+const uint8_t SRAM_SS_PIN 18;             // Pin for SPI. Change if necessary
 static MicrochipSRAM memory(SRAM_SS_PIN); // Instantiate the class
 
 uint32_t address;                    ///< Memory address variable
