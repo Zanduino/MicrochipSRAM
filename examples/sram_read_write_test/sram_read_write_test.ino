@@ -43,9 +43,9 @@ Version| Date       | Developer           | Comments
 */
 #include <MicrochipSRAM.h>                // Include the library
 #ifdef __AVR__
-const uint8_t SRAM_SS_PIN = A4;            // Pin for SPI. Change if necessary
+const uint8_t SRAM_SS_PIN = A4;            ///< Pin for SPI. Change if necessary
 #else
-const uint8_t SRAM_SS_PIN = 1;            // Pin numbers are different on non-AVR
+const uint8_t SRAM_SS_PIN = 1;            ///< Pin numbers are different on non-AVR
 #endif
 
 static MicrochipSRAM memory(SRAM_SS_PIN); // Instantiate the class
