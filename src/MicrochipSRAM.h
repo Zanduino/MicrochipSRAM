@@ -138,10 +138,10 @@ Version| Date       | Developer                     | Comments
       /*!
           @brief     Template for filling SRAM memory with a specified value
           @details   Will fill as many copies of the given value as will fit in memory
-          @param[in] addr Memory address
+          @param[in] addr Memory address to start filling at
           @param[in] value Data Type "T" to read
       */
-      template< typename T > &fillMemory( uint32_t addr, T &value ) 
+      template< typename T > uint8_t &fillMemory( uint32_t addr, T &value ) 
       {
         while(addr<(SRAMBytes-sizeof(T))) addr = put(addr,value); // loop until we reach end of memory
       } // of method fillMemory()

@@ -96,7 +96,7 @@ void setup()
     memory.fillMemory(0,testStruct); // fill memory starting at 0with structure
     Serial.print("Reading 10th copy of the structure back from memory.\n");
     testStruct.pi = 0;
-    testStruct.textarray[0] = "X"; // overwrite first character in array
+    testStruct.textarray[0] = 'X'; // overwrite first character in array
     memory.get(sizeof(testStruct)*10,testStruct);
     Serial.print("Text array in structure is \"");
     Serial.print(testStruct.textarray);
