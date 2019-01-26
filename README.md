@@ -33,6 +33,6 @@ The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this
   </tr>
 </table>
 
-See the [Wiki pages](https://github.com/SV-Zanshin/MicrochipSRAM/wiki) for details of the class and the variables / functions accessible in it.
+See the [Wiki pages](https://github.com/SV-Zanshin/MicrochipSRAM/wiki) for details of the class and the variables / functions accessible in it. The doxygen documentation can be found at [Doxygen Documentation](https://sv-zanshin.github.io/MicrochipSRAM/html/index.html)  
 
 ![Zanshin Logo](https://www.sv-zanshin.com/r/images/site/gif/zanshinkanjitiny.gif) <img src="https://www.sv-zanshin.com/r/images/site/gif/zanshintext.gif" width="75"/>
