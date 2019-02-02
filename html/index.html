@@ -99,7 +99,7 @@ Description</h1>
 <br />
  Instantiating the class involves turning on SPI for the CS/SS pin passed in, and then performing some read and write operations to determine which memory is actually being used. First, a test to see whether 2 or 3 address bytes are used. Only the 1Mbit chips use 3 address bytes, but if 2 address bytes are in use then two bytes are written to the last address, and if the first byte of the chip has a changed value then we know we've gotten a wraparound and have determined the memory size. If the first byte hasn't changed, then the actual memory has to be a larger one, and the next possible size is tested.</p>
 <h1><a class="anchor" id="MicroChipSRAMlicense"></a>
-GNU General Public License v3.0</h1>
+__**GNU General Public License v3.0**__</h1>
 <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
 <h1><a class="anchor" id="author"></a>
 Author</h1>
