@@ -3,7 +3,7 @@ var NAVTREE =
   [ "MicrochipSRAM", "index.html", [
     [ "Arduino Library Header to access a Microchip SRAM", "index.html", [
       [ "Description", "index.html#MCP7940_intro_section", null ],
-      [ "__**GNU General Public License v3.0**__", "index.html#MicroChipSRAMlicense", null ],
+      [ "GNU General Public License v3.0", "index.html#MicroChipSRAMlicense", null ],
       [ "Author", "index.html#author", null ],
       [ "Changelog", "index.html#versions", null ]
     ] ],
