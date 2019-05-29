@@ -47,7 +47,8 @@ Written by Arnd\@SV-Zanshin
 
 Version| Date       | Developer                     | Comments
 ------ | ---------- | ----------------------------- | --------
-1.0.5  | 2019-01-26 | https://github.com/SV-Zanshin | Issue #11 - converted documentation to doxygen
+1.0.5  | 2019-05-28 | https://github.com/SV-Zanshin | Issue #2 - corrected misleading comments
+1.0.5  | 2019-01-26 | https://github.com/SV-Zanshin | Issue #1 - converted documentation to doxygen
 1.0.4  | 2018-06-25 | https://github.com/SV-Zanshin | Minor changes
 1.0.3  | 2017-07-31 | https://github.com/SV-Zanshin | Only function prototypes may contain default values / optional
                                                       parameter declarations, functions may not as this can cause
@@ -95,19 +96,19 @@ Version| Date       | Developer                     | Comments
       ** will automatically wrap back to the beginning of the memory                                              **
       *************************************************************************************************************/
       /*!
-          @brief     Template for reading from the SRAM memory
-          @details   As a template it can support compile-time data type definitions
-          @param[in] addr Memory address
-          @param[in] value Data Type "T" to read
-          @return    New current address in SRAM
+          @brief      Template for reading from the SRAM memory
+          @details    As a template it can support compile-time data type definitions
+          @param[in]  addr Memory address
+          @param[out] value Data Type "T" containing data read from memory
+          @return     New current address in SRAM
       */
       template< typename T > uint32_t &get(const uint32_t addr,T &value) 
       {
         static uint32_t returnAddress;
-        uint8_t* bytePtr       = (uint8_t*)&value;                          // Pointer to structure beginning
-        returnAddress = (addr+sizeof(T))%SRAMBytes;                         // compute the return address
+        uint8_t* bytePtr = (uint8_t*)&value;                                // Pointer to structure beginning
+        returnAddress    = (addr+sizeof(T))%SRAMBytes;                      // compute the return address
         digitalWrite(_SSPin,LOW);                                           // Pull CS/SS low to select device
-        SPI.transfer(SRAM_READ_CODE);                                       // Send the command for WRITE mode
+        SPI.transfer(SRAM_READ_CODE);                                       // Send the command for READ mode
         if (SRAMBytes==SRAM_1024) SPI.transfer((uint8_t)(addr>>16)&0xFF);   // Send the MSB of the 24bit address
         SPI.transfer((uint8_t)(addr>>8) & 0xFF);                            // Send the 2nd byte of the address
         SPI.transfer((uint8_t)addr);                                        // Send the LSB of the address
@@ -120,7 +121,7 @@ Version| Date       | Developer                     | Comments
           @brief     Template for writing to the SRAM memory
           @details   As a template it can support compile-time data type definitions
           @param[in] addr Memory address
-          @param[in] value Data Type "T" to read
+          @param[in] value Data Type "T" to write
           @return    New current address in SRAM
       */
       template<typename T> uint32_t &put(const uint32_t addr,const T &value)

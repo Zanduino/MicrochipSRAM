@@ -10,7 +10,7 @@ The library contains the constructor, which requires the CS/SS pin number as inp
 of the specific Microchip SPI SRAM chip detected. If a zero is returned it means that no chip was detected which 
 could be caused by either an incorrect CS/SS pin number, or incorrect wiring or no chip.\n\n
 
-There are only 3 methods in the library:\n\n                                                                                                               **
+There are only 3 public methods in the library:\n\n                                                                                                               **
 [optional uint32 return address] get ( address, {variable} )\n
 [optional uint32 return address] put ( address, {variable} )\n
                           fillMemory ( address, {variable} )\n\n
@@ -37,21 +37,22 @@ Written by Arnd\@SV-Zanshin
 
 Version| Date       | Developer           | Comments
 ------ | ---------- | ------------------- | --------
+1.0.1  | 2019-05-29 | SV-Zanshin          | Cleaned up comments
 1.0.1  | 2019-01-26 | SV-Zanshin          | Issue #11 - converted comments to doxygen style
 1.0.0  | 2016-11-16 | SV-Zanshin          | Initial coding
 
 */
 #include <MicrochipSRAM.h>                // Include the library
 #ifdef __AVR__
-const uint8_t SRAM_SS_PIN = A4;            ///< Pin for SPI. Change if necessary
+const uint8_t SRAM_SS_PIN = A4;           ///< Pin for SPI. Change if necessary
 #else
 const uint8_t SRAM_SS_PIN = 1;            ///< Pin numbers are different on non-AVR
 #endif
 
-static MicrochipSRAM memory(SRAM_SS_PIN); // Instantiate the class
+static MicrochipSRAM memory(SRAM_SS_PIN); // Instantiate the class to the given pin
 
-uint32_t address;                    ///< Memory address variable
-char testArray[12] = "Hello World";  ///< test data array for writing to memory
+uint32_t address;                         ///< Memory address variable
+char testArray[12] = "Hello World";       ///< test data array for writing to memory
 
 /**
 * Structure containing multiple values of varying type used for the example
@@ -117,5 +118,5 @@ void setup()
 */
 void loop() 
 { 
-  while(1); 
+  while(1); // infinite loop, never exits this statement
 } // of method "loop()"
