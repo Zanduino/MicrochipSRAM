@@ -1,6 +1,15 @@
+######################################################################################################
+## Doxygen control file for Version 1.8.16                                                          ##
+##                                                                                                  ##
+## Date       Developer           Comments                                                          ##
+## ========== =================== ================================================================= ##
+## 2020-06-04 Arnd@SV-Zanshin     Updated to version v.1.0.6                                        ##
+## 2020-05-11 Arnd@SV-Zanshin     Removed all comments in order to compact this file                ##
+##                                                                                                  ##
+######################################################################################################
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = Microchip SRAM
-PROJECT_NUMBER         = "Version 1.0.4"
+PROJECT_NUMBER         = "Version 1.0.6"
 PROJECT_BRIEF          = "Arduino Library for controlling Microchip SRAM via SPI"
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       =
