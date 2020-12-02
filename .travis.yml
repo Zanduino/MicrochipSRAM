@@ -3,6 +3,7 @@
 ##                                                                                                  ##
 ## Date       Developer           Comments                                                          ##
 ## ========== =================== ================================================================= ##
+## 2020-12-02 Arnd@SV-Zanshin     Added call to clang-foramt                                        ##
 ## 2020-05-11 Arnd@SV-Zanshin     Removed Adafruit libraries which now caused Travis to fail        ##
 ## 2019-01-26 Arnd@SV-Zanshin     Corrected PRETTYNAME                                              ##
 ## 2019-01-20 Arnd@SV-Zanshin     Linked to Adafruit script rather than manually defining all tests ##
@@ -27,6 +28,7 @@ env:
 
 before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
+  - curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/run-clang-format.py > run-clang-format.py
 
 install:
 
