@@ -92,19 +92,15 @@ $(document).ready(function(){initNavTree('class_microchip_s_r_a_m.html','');});
 
 <p>Access the Microchip SRAM with automated memory size detection.  
  <a href="class_microchip_s_r_a_m.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="_microchip_s_r_a_m_8h_source.html">MicrochipSRAM.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a03727887df1e0e957ca9b403f867a7ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_microchip_s_r_a_m.html#a03727887df1e0e957ca9b403f867a7ec">MicrochipSRAM</a> (const uint8_t SSPin)</td></tr>
-<tr class="memdesc:a03727887df1e0e957ca9b403f867a7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor.  <a href="#a03727887df1e0e957ca9b403f867a7ec">More...</a><br /></td></tr>
 <tr class="separator:a03727887df1e0e957ca9b403f867a7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75970707f8639191951434e089c9a7b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_microchip_s_r_a_m.html#a75970707f8639191951434e089c9a7b9">~MicrochipSRAM</a> ()</td></tr>
 <tr class="memdesc:a75970707f8639191951434e089c9a7b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <a href="#a75970707f8639191951434e089c9a7b9">More...</a><br /></td></tr>
 <tr class="separator:a75970707f8639191951434e089c9a7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27274de5fce5a98140613391b9107be7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_microchip_s_r_a_m.html#a27274de5fce5a98140613391b9107be7">clearMemory</a> (const uint8_t clearValue=0)</td></tr>
-<tr class="memdesc:a27274de5fce5a98140613391b9107be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all memory values to a single byte value.  <a href="#a27274de5fce5a98140613391b9107be7">More...</a><br /></td></tr>
 <tr class="separator:a27274de5fce5a98140613391b9107be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29e4c7da395a923a149e4611c7d625a1"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a29e4c7da395a923a149e4611c7d625a1"><td class="memTemplItemLeft" align="right" valign="top">uint32_t &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_microchip_s_r_a_m.html#a29e4c7da395a923a149e4611c7d625a1">get</a> (const uint32_t addr, T &amp;value)</td></tr>
@@ -144,11 +140,10 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Class constructor. </p>
+<p>Class constructor</p>
 <p>Define the SS Pin and the determine the attached SRAM memory. The algorithm to detect which memory is attached makes use of the fact that a write beyond the end of memory will wrap around to the beginning of memory. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">SSPin</td><td>SPI Slave-Select pin number </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">SSPin</td><td>SPI Slave-Select pin number</td></tr>
   </table>
   </dd>
 </dl>
@@ -191,11 +186,9 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Set all memory values to a single byte value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Set all memory values to a single byte value </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">clearValue</td><td>Single byte to set all memory to </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">clearValue</td><td>Single byte to set all memory to</td></tr>
   </table>
   </dd>
 </dl>

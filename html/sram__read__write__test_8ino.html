@@ -119,9 +119,8 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sram__read__write__test_8ino.html#a9e326ac735d4184ab45e850766cce928">testArray</a> [12] = &quot;Hello World&quot;</td></tr>
 <tr class="memdesc:a9e326ac735d4184ab45e850766cce928"><td class="mdescLeft">&#160;</td><td class="mdescRight">test data array for writing to memory <br /></td></tr>
 <tr class="separator:a9e326ac735d4184ab45e850766cce928"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4014c0e9f819e3fd6b0e4e97eddf0552"><td class="memItemLeft" align="right" valign="top"><a id="a4014c0e9f819e3fd6b0e4e97eddf0552"></a>
-<a class="el" href="structtest_struct_type.html">testStructType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sram__read__write__test_8ino.html#a4014c0e9f819e3fd6b0e4e97eddf0552">testStruct</a> = {3.14159, &quot;Hello World&quot; }</td></tr>
-<tr class="memdesc:a4014c0e9f819e3fd6b0e4e97eddf0552"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize structure to known values <br /></td></tr>
+<tr class="memitem:a4014c0e9f819e3fd6b0e4e97eddf0552"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtest_struct_type.html">testStructType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sram__read__write__test_8ino.html#a4014c0e9f819e3fd6b0e4e97eddf0552">testStruct</a></td></tr>
+<tr class="memdesc:a4014c0e9f819e3fd6b0e4e97eddf0552"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize structure to known values  <a href="#a4014c0e9f819e3fd6b0e4e97eddf0552">More...</a><br /></td></tr>
 <tr class="separator:a4014c0e9f819e3fd6b0e4e97eddf0552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -136,10 +135,10 @@ Description</h1>
  There are only 3 public methods in the library:<br />
 <br />
  ** [optional uint32 return address] get ( address, {variable} )<br />
-[optional uint32 return address] put ( address, {variable} )<br />
+ [optional uint32 return address] put ( address, {variable} )<br />
  fillMemory ( address, {variable} )<br />
 <br />
-If the address is higher than the actual amount of memory bytes availabe it automatically overflows and starts back at the beginning of memory, i.e. a 256kbit chip (23x256) stores 32768 bytes. If one puts 2 bytes starting at 32767 then byte 0 of the array is overwritten. Get and Put will word wrap from the end to the beginning.<br />
+ If the address is higher than the actual amount of memory bytes availabe it automatically overflows and starts back at the beginning of memory, i.e. a 256kbit chip (23x256) stores 32768 bytes. If one puts 2 bytes starting at 32767 then byte 0 of the array is overwritten. Get and Put will word wrap from the end to the beginning.<br />
 <br />
  fillMemory will place identical copies of the {variable} starting at the memory position specified to the end of memory. Any partial entry at the end of memory will not be filled.</p>
 <h1><a class="anchor" id="sram_read_write_testlicense"></a>
@@ -156,7 +155,7 @@ Changelog</h1>
 <tr>
 <td>1.0.1 </td><td>2019-05-29 </td><td>SV-Zanshin </td><td>Cleaned up comments </td></tr>
 <tr>
-<td>1.0.1 </td><td>2019-01-26 </td><td>SV-Zanshin </td><td>Issue #11 - converted comments to doxygen style </td></tr>
+<td>1.0.1 </td><td>2019-01-26 </td><td>SV-Zanshin </td><td>Issue #11 - converted to doxygen style </td></tr>
 <tr>
 <td>1.0.0 </td><td>2016-11-16 </td><td>SV-Zanshin </td><td>Initial coding </td></tr>
 </table>
@@ -198,6 +197,23 @@ Changelog</h1>
 
 <p>Arduino method called once at startup to initialize the system. </p>
 <p>This is an Arduino IDE method which is called first upon boot or restart. It is only called one time and then control goes to the main "loop()" method, from which control never returns </p><dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4014c0e9f819e3fd6b0e4e97eddf0552"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4014c0e9f819e3fd6b0e4e97eddf0552">&#9670;&nbsp;</a></span>testStruct</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtest_struct_type.html">testStructType</a> testStruct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">    3.14159, <span class="stringliteral">&quot;Hello World&quot;</span>}</div></div><!-- fragment -->
+<p>initialize structure to known values </p>
 
 </div>
 </div>
