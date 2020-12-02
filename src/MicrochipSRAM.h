@@ -60,6 +60,7 @@ Written by Arnd\@SV-Zanshin
 
 Version| Date       | Developer                     | Comments
 ------ | ---------- | ----------------------------- | --------
+1.0.6  | 2020-12-02 | https://github.com/SV-Zanshin | Reformatted for clang-format
 1.0.5  | 2019-05-28 | https://github.com/SV-Zanshin | Issue #2 - corrected misleading comments 
 1.0.5  | 2019-01-26 | https://github.com/SV-Zanshin | Issue #1 - converted documentation to doxygen 
 1.0.4  | 2018-06-25 | https://github.com/SV-Zanshin | Minor changes 
@@ -75,9 +76,9 @@ Version| Date       | Developer                     | Comments
 #ifndef MicrochipSRAM_h
 /** @brief  Guard code to prevent multiple definitions */
 #define MicrochipSRAM_h
-/***************************************************************************************************************
+/****************************************************************************************************
 ** Declare constants used in the class **
-***************************************************************************************************************/
+****************************************************************************************************/
 const uint8_t  SRAM_WRITE_MODE_REG{0x01};  ///< Write the mode register
 const uint8_t  SRAM_READ_MODE_REG{0x05};   ///< Read the mode register
 const uint8_t  SRAM_BYTE_MODE{B00000000};  ///< 2MSB 00 is Byte mode
@@ -100,13 +101,12 @@ class MicrochipSRAM {
   MicrochipSRAM(const uint8_t SSPin);
   ~MicrochipSRAM();
   void clearMemory(const uint8_t clearValue = 0) const;
-  /*********************************************************************************************
-  ** Declare the get and put methods as template functions here in the header file. This      **
-  ** allows any type of variable or structure to be used rather than having to make one       **
-  ** function for each datatype used. Note that due to the sequential mode being active,      **
-  ** reads and writes that go past the last existing address will automatically wrap back to  **
-  ** the beginning of the memory                                                              **
-  ********************************************************************************************/
+  /*************************************************************************************************
+  ** Declare the get and put methods as template functions here in the header file. This allows   **
+  ** any type of variable or structure to be used rather than having to make one function for     **
+  ** each datatype used. Note that due to the sequential mode being active, reads and writes that **
+  ** go past the last existing address will automatically wrap back to the beginning of memory.   **
+  *************************************************************************************************/
   template <typename T>
   uint32_t &get(const uint32_t addr, T &value) const {
     /*!

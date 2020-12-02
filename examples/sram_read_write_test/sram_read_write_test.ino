@@ -45,6 +45,7 @@ Written by Arnd\@SV-Zanshin
 
 Version| Date       | Developer           | Comments
 ------ | ---------- | ------------------- | --------
+1.0.2  | 2020-12-02 | SV-Zanshin          | Reformatted with clang-format
 1.0.1  | 2019-05-29 | SV-Zanshin          | Cleaned up comments
 1.0.1  | 2019-01-26 | SV-Zanshin          | Issue #11 - converted to doxygen style
 1.0.0  | 2016-11-16 | SV-Zanshin          | Initial coding
