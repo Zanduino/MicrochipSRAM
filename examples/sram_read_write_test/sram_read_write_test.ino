@@ -46,33 +46,31 @@ Written by Arnd\@SV-Zanshin
 Version| Date       | Developer           | Comments
 ------ | ---------- | ------------------- | --------
 1.0.1  | 2019-05-29 | SV-Zanshin          | Cleaned up comments
-1.0.1  | 2019-01-26 | SV-Zanshin          | Issue #11 - converted to doxygen style 
+1.0.1  | 2019-01-26 | SV-Zanshin          | Issue #11 - converted to doxygen style
 1.0.0  | 2016-11-16 | SV-Zanshin          | Initial coding
 
 */
-#include <MicrochipSRAM.h> // Include the library
+#include <MicrochipSRAM.h>  // Include the library
 #ifdef __AVR__
-const uint8_t SRAM_SS_PIN = A4; ///< Pin for SPI. Change if necessary
+const uint8_t SRAM_SS_PIN = A4;  ///< Pin for SPI. Change if necessary
 #else
-const uint8_t SRAM_SS_PIN = 1; ///< Pin numbers are different on non-AVR
+const uint8_t SRAM_SS_PIN = 1;  ///< Pin numbers are different on non-AVR
 #endif
 
-static MicrochipSRAM
-    memory(SRAM_SS_PIN); // Instantiate the class to the given pin
+static MicrochipSRAM memory(SRAM_SS_PIN);  // Instantiate the class to the given pin
 
-uint32_t address;                   ///< Memory address variable
-char testArray[12] = "Hello World"; ///< test data array for writing to memory
+uint32_t address;                        ///< Memory address variable
+char     testArray[12] = "Hello World";  ///< test data array for writing to memory
 
 /**
  * Structure containing multiple values of varying type used for the example
  */
 struct testStructType {
-  float pi;           ///< Example floating point value
-  char textarray[12]; ///< Example text array
+  float pi;             ///< Example floating point value
+  char  textarray[12];  ///< Example text array
 };
 
-testStructType testStruct = {
-    3.14159, "Hello World"}; ///< initialize structure to known values
+testStructType testStruct = {3.14159, "Hello World"};  ///< initialize structure to known values
 
 /*!
     @brief    Arduino method called once at startup to initialize the system
@@ -83,8 +81,8 @@ testStructType testStruct = {
 */
 void setup() {
   Serial.begin(115200);
-#ifdef __AVR_ATmega32U4__ // If a 32U4 processor, wait 3 seconds for the serial
-                          // interface to initialize
+#ifdef __AVR_ATmega32U4__  // If a 32U4 processor, wait 3 seconds for the serial
+                           // interface to initialize
   delay(3000);
 #endif
   Serial.println("Starting Microchip SRAM test program");
@@ -100,28 +98,27 @@ void setup() {
     Serial.print(" Bytes of memory has been detected.\n\n");
     Serial.print("Writing 4 consecutive arrays starting at 100:\n");
     address = 100;
-    for (uint8_t i = 0; i < 4; i++)
-      address = memory.put(address, testArray);
+    for (uint8_t i = 0; i < 4; i++) address = memory.put(address, testArray);
     Serial.print("Next address to write to is ");
     Serial.println(address);
     Serial.print("Reading text array at location 112:\n");
-    memset(testArray, 0, sizeof(testArray)); // move zeroes to array
+    memset(testArray, 0, sizeof(testArray));  // move zeroes to array
     memory.get(112, testArray);
     Serial.print("Text array read is \"");
     Serial.print(testArray);
     Serial.print("\"\nFilling memory with copies of a structure\n");
-    memory.fillMemory(0, testStruct); // fill memory starting at 0with structure
+    memory.fillMemory(0, testStruct);  // fill memory starting at 0with structure
     Serial.print("Reading 10th copy of the structure back from memory.\n");
-    testStruct.pi = 0;
-    testStruct.textarray[0] = 'X'; // overwrite first character in array
+    testStruct.pi           = 0;
+    testStruct.textarray[0] = 'X';  // overwrite first character in array
     memory.get(sizeof(testStruct) * 10, testStruct);
     Serial.print("Text array in structure is \"");
     Serial.print(testStruct.textarray);
     Serial.print("\"\npi in structure is \"");
     Serial.print(testStruct.pi, 5);
     Serial.print("\"\n");
-  } // of if-then-else a chip was detected
-} // of method "setup()"
+  }  // of if-then-else a chip was detected
+}  // of method "setup()"
 
 /*!
     @brief    Arduino method for the main program loop
@@ -131,5 +128,5 @@ void setup() {
 */
 void loop() {
   while (1)
-    ; // infinite loop, never exits this statement
-} // of method "loop()"
+    ;  // infinite loop, never exits this statement
+}  // of method "loop()"

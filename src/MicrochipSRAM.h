@@ -99,7 +99,7 @@ class MicrochipSRAM {
  public:
   MicrochipSRAM(const uint8_t SSPin);
   ~MicrochipSRAM();
-  void clearMemory(const uint8_t clearValue = 0);
+  void clearMemory(const uint8_t clearValue = 0) const;
   /*********************************************************************************************
   ** Declare the get and put methods as template functions here in the header file. This      **
   ** allows any type of variable or structure to be used rather than having to make one       **
@@ -107,15 +107,15 @@ class MicrochipSRAM {
   ** reads and writes that go past the last existing address will automatically wrap back to  **
   ** the beginning of the memory                                                              **
   ********************************************************************************************/
-  /*!
-      @brief      Template for reading from the SRAM memory
-      @details    As a template it can support compile-time data type definitions
-      @param[in]  addr Memory address
-      @param[out] value Data Type "T" containing data read from memory
-      @return     New current address in SRAM
-  */
   template <typename T>
-  uint32_t &get(const uint32_t addr, T &value) {
+  uint32_t &get(const uint32_t addr, T &value) const {
+    /*!
+        @brief      Template for reading from the SRAM memory
+        @details    As a template it can support compile-time data type definitions
+        @param[in]  addr Memory address
+        @param[out] value Data Type "T" containing data read from memory
+        @return     New current address in SRAM
+    */
     static uint32_t returnAddress;
     uint8_t *       bytePtr = (uint8_t *)&value;               // Pointer to structure beginning
     returnAddress           = (addr + sizeof(T)) % SRAMBytes;  // compute the return address
@@ -130,16 +130,15 @@ class MicrochipSRAM {
     digitalWrite(_SSPin, HIGH);         // Pull the SS/CS high to deselect
     return (returnAddress);             // Return the computed new address
   }                                     // of method "get()"
-
-  /*!
-      @brief     Template for writing to the SRAM memory
-      @details   As a template it can support compile-time data type definitions
-      @param[in] addr Memory address
-      @param[in] value Data Type "T" to write
-      @return    New current address in SRAM
-  */
   template <typename T>
-  uint32_t &put(const uint32_t addr, const T &value) {
+  uint32_t &put(const uint32_t addr, const T &value) const {
+    /*!
+        @brief     Template for writing to the SRAM memory
+        @details   As a template it can support compile-time data type definitions
+        @param[in] addr Memory address
+        @param[in] value Data Type "T" to write
+        @return    New current address in SRAM
+    */
     static uint32_t returnAddress;
     const uint8_t * bytePtr = (const uint8_t *)&value;         // Pointer to structure beginning
     returnAddress           = (addr + sizeof(T)) % SRAMBytes;  // compute the return address
@@ -154,15 +153,14 @@ class MicrochipSRAM {
     digitalWrite(_SSPin, HIGH);  // Pull the SS/CS high to deselect
     return (returnAddress);      // Return the computed new address
   }                              // of method put()
-
-  /*!
-      @brief     Template for filling SRAM memory with a specified value
-      @details   Will fill as many copies of the given value as will fit in memory
-      @param[in] addr Memory address to start filling at
-      @param[in] value Data Type "T" to read
-  */
   template <typename T>
-  uint32_t &fillMemory(uint32_t addr, T &value) {
+  uint32_t &fillMemory(uint32_t addr, T &value) const {
+    /*!
+        @brief     Template for filling SRAM memory with a specified value
+        @details   Will fill as many copies of the given value as will fit in memory
+        @param[in] addr Memory address to start filling at
+        @param[in] value Data Type "T" to read
+    */
     while (addr < (SRAMBytes - sizeof(T)))
       addr = put(addr, value);  // loop until we reach end of memory
     return (addr);

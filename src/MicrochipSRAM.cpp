@@ -90,14 +90,13 @@ MicrochipSRAM::MicrochipSRAM(const uint8_t SSPin) : _SSPin(SSPin) {
     }                         // of if-then-else we have a positive 1mbit ID
   }                           // of if-then the size was specified by caller
 }  // of class constructor
-
-/*!
- * @brief   Class destructor
- * @details Currently empty and unused
- */
-MicrochipSRAM::~MicrochipSRAM() {}
-
-void MicrochipSRAM::clearMemory(const uint8_t clearValue) {
+MicrochipSRAM::~MicrochipSRAM() {
+  /*!
+   * @brief   Class destructor
+   * @details Currently empty and unused
+   */
+}
+void MicrochipSRAM::clearMemory(const uint8_t clearValue) const {
   /*!
    * @brief   Set all memory values to a single byte value
    * @param[in] clearValue Single byte to set all memory to
