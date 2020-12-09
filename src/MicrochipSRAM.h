@@ -58,17 +58,17 @@ Written by Arnd\@SV-Zanshin
 
 @section versions Changelog
 
-Version| Date       | Developer                     | Comments
------- | ---------- | ----------------------------- | --------
-1.0.6  | 2020-12-02 | https://github.com/SV-Zanshin | Reformatted for clang-format
-1.0.5  | 2019-05-28 | https://github.com/SV-Zanshin | Issue #2 - corrected misleading comments 
-1.0.5  | 2019-01-26 | https://github.com/SV-Zanshin | Issue #1 - converted documentation to doxygen 
-1.0.4  | 2018-06-25 | https://github.com/SV-Zanshin | Minor changes 
-1.0.3  | 2017-07-31 | https://github.com/SV-Zanshin | Only function prototypes may contain default values / optional parameter declarations, functions may not as this can cause compiler errors
-1.0.2  | 2016-11-20 | https://github.com/SV-Zanshin | Constructor uses CS/SS pin, made "SRAMBytes" public 
-1.0.1  | 2016-11-19 | https://github.com/SV-Zanshin | Added method "clearMemory" 
-1.0.0  | 2016-11-19 | https://github.com/SV-Zanshin | Cleaned up, https://github.com/SV-Zanshin/MicrochipSRAM 
-1.0.b1 | 2016-11-16 | https://github.com/SV-Zanshin | Created class
+Version| Date       | Developer  | Comments
+------ | ---------- | ---------- | --------
+1.0.6  | 2020-12-02 | SV-Zanshin | Reformatted for clang-format
+1.0.5  | 2019-05-28 | SV-Zanshin | Issue #2 - corrected misleading comments 
+1.0.5  | 2019-01-26 | SV-Zanshin | Issue #1 - converted documentation to doxygen 
+1.0.4  | 2018-06-25 | SV-Zanshin | Minor changes 
+1.0.3  | 2017-07-31 | SV-Zanshin | Only function prototypes may contain default values / optional parameter declarations, functions may not as this can cause compiler errors
+1.0.2  | 2016-11-20 | SV-Zanshin | Constructor uses CS/SS pin, made "SRAMBytes" public 
+1.0.1  | 2016-11-19 | SV-Zanshin | Added method "clearMemory" 
+1.0.0  | 2016-11-19 | SV-Zanshin | Cleaned up, https://github.com/SV-Zanshin/MicrochipSRAM 
+1.0.b1 | 2016-11-16 | SV-Zanshin | Created class
 */
 // clang-format on
 #include "Arduino.h"  // Arduino data type definitions

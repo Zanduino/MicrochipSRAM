@@ -43,19 +43,18 @@ Written by Arnd\@SV-Zanshin
 
 @section sram_read_write_testversions Changelog
 
-Version| Date       | Developer           | Comments
------- | ---------- | ------------------- | --------
-1.0.2  | 2020-12-02 | SV-Zanshin          | Reformatted with clang-format
-1.0.1  | 2019-05-29 | SV-Zanshin          | Cleaned up comments
-1.0.1  | 2019-01-26 | SV-Zanshin          | Issue #11 - converted to doxygen style
-1.0.0  | 2016-11-16 | SV-Zanshin          | Initial coding
-
+Version| Date       | Developer  | Comments
+------ | ---------- | ---------- | --------
+1.0.2  | 2020-12-02 | SV-Zanshin | Reformatted with clang-format
+1.0.1  | 2019-05-29 | SV-Zanshin | Cleaned up comments
+1.0.1  | 2019-01-26 | SV-Zanshin | Issue #11 - converted to doxygen style
+1.0.0  | 2016-11-16 | SV-Zanshin | Initial coding
 */
 #include <MicrochipSRAM.h>  // Include the library
 #ifdef __AVR__
-const uint8_t SRAM_SS_PIN = A4;  ///< Pin for SPI. Change if necessary
+const uint8_t SRAM_SS_PIN{A4};  ///< Pin for SPI. Change if necessary
 #else
-const uint8_t SRAM_SS_PIN = 1;  ///< Pin numbers are different on non-AVR
+const uint8_t SRAM_SS_PIN{1};  ///< Pin numbers are different on non-AVR
 #endif
 
 static MicrochipSRAM memory(SRAM_SS_PIN);  // Instantiate the class to the given pin
@@ -73,14 +72,14 @@ struct testStructType {
 
 testStructType testStruct = {3.14159, "Hello World"};  ///< initialize structure to known values
 
-/*!
-    @brief    Arduino method called once at startup to initialize the system
-    @details  This is an Arduino IDE method which is called first upon boot or
-   restart. It is only called one time and then control goes to the main
-   "loop()" method, from which control never returns
-    @return   void
-*/
 void setup() {
+  /*!
+      @brief    Arduino method called once at startup to initialize the system
+      @details  This is an Arduino IDE method which is called first upon boot or
+     restart. It is only called one time and then control goes to the main
+     "loop()" method, from which control never returns
+      @return   void
+  */
   Serial.begin(115200);
 #ifdef __AVR_ATmega32U4__  // If a 32U4 processor, wait 3 seconds for the serial
                            // interface to initialize
@@ -121,13 +120,13 @@ void setup() {
   }  // of if-then-else a chip was detected
 }  // of method "setup()"
 
-/*!
-    @brief    Arduino method for the main program loop
-    @details  This is the main program for the Arduino IDE, it is an infinite
-   loop and keeps on repeating.
-    @return   void
-*/
 void loop() {
+  /*!
+      @brief    Arduino method for the main program loop
+      @details  This is the main program for the Arduino IDE, it is an infinite
+     loop and keeps on repeating.
+      @return   void
+  */
   while (1)
     ;  // infinite loop, never exits this statement
 }  // of method "loop()"
