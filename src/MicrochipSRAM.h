@@ -12,9 +12,9 @@ http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overvie
 \n\n
 
 The most recent version of the library is at
-https://github.com/SV-Zanshin/MicrochipSRAM/archive/master.zip, the library and
+https://github.com/Zanduino/MicrochipSRAM/archive/master.zip, the library and
 sample program descriptions can be found at
-https://github.com/SV-Zanshin/MicrochipSRAM \n\n
+https://github.com/Zanduino/MicrochipSRAM \n\n
 
 At the time of coding this library, the following memories can be used: 23x640
 (64Kbit), 23x256 (256Kbit), 23x512 (512Kbit), 23xx1024 (1Mbit), 23LCV512
@@ -42,7 +42,25 @@ a changed value then we know we've gotten a wraparound and have determined the
 memory size. If the first byte hasn't changed, then the actual memory has to be
 a larger one, and the next possible size is tested.
 
+@section doxygen configuration
+This library is built with the standard "Doxyfile", which is located at
+https://github.com/Zanduino/Common/blob/main/Doxygen. As described on that page, there are only 5
+environment variables used, and these are set in the project's actions file, located at
+https://github.com/Zanduino/MicrochipSRAM/blob/master/.github/workflows/ci-doxygen.yml
+Edit this file and set the 5 variables: PRETTYNAME, PROJECT_NAME, PROJECT_NUMBER, PROJECT_BRIEF and
+PROJECT_LOGO so that these values are used in the doxygen documentation.
+The local copy of the doxyfile should be in the project's root directory in order to do local
+doxygen testing, but the file is ignored on upload to GitHub.
+
+@section clang-format
+Part of the GitHub actions for CI is running every source file through "clang-format" to ensure
+that coding formatting is done the same for all files. The configuration file ".clang-format" is
+located at https://github.com/Zanduino/Common/tree/main/clang-format and this is used for CI tests
+when pushing to GitHub. The local file, if present in the root directory, is ignored when
+committing and uploading.
+
 @section MicroChipSRAMlicense GNU General Public License v3.0
+
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
 Foundation, either version 3 of the License, or (at your option) any later
@@ -61,13 +79,13 @@ Written by Arnd\@SV-Zanshin
 Version| Date       | Developer  | Comments
 ------ | ---------- | ---------- | --------
 1.0.6  | 2020-12-02 | SV-Zanshin | Reformatted for clang-format
-1.0.5  | 2019-05-28 | SV-Zanshin | Issue #2 - corrected misleading comments 
-1.0.5  | 2019-01-26 | SV-Zanshin | Issue #1 - converted documentation to doxygen 
-1.0.4  | 2018-06-25 | SV-Zanshin | Minor changes 
+1.0.5  | 2019-05-28 | SV-Zanshin | Issue #2 - corrected misleading comments
+1.0.5  | 2019-01-26 | SV-Zanshin | Issue #1 - converted documentation to doxygen
+1.0.4  | 2018-06-25 | SV-Zanshin | Minor changes
 1.0.3  | 2017-07-31 | SV-Zanshin | Only function prototypes may contain default values / optional parameter declarations, functions may not as this can cause compiler errors
-1.0.2  | 2016-11-20 | SV-Zanshin | Constructor uses CS/SS pin, made "SRAMBytes" public 
-1.0.1  | 2016-11-19 | SV-Zanshin | Added method "clearMemory" 
-1.0.0  | 2016-11-19 | SV-Zanshin | Cleaned up, https://github.com/SV-Zanshin/MicrochipSRAM 
+1.0.2  | 2016-11-20 | SV-Zanshin | Constructor uses CS/SS pin, made "SRAMBytes" public
+1.0.1  | 2016-11-19 | SV-Zanshin | Added method "clearMemory"
+1.0.0  | 2016-11-19 | SV-Zanshin | Cleaned up, https://github.com/Zanduino/MicrochipSRAM
 1.0.b1 | 2016-11-16 | SV-Zanshin | Created class
 */
 // clang-format on
