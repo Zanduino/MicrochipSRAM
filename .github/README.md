@@ -38,4 +38,4 @@ The following Microchip **SRAM** and **SNVRAM** chips can be accessed using this
 
 See the [Wiki pages](https://github.com/Zanduino/MicrochipSRAM/wiki) for details of the class and the variables / functions accessible in it. The doxygen documentation can be found at [Doxygen Documentation](https://Zanduino.github.io/MicrochipSRAM/html/index.html)  
 
-[![Zanshin Logo](https://zanduino.github.io/Images/zanshinkanjitiny.gif) <img src="https://zanduino.github.io/Images/zanshintext.gif" width="75"/>](https://www.sv-zanshin.com)
+[![Zanshin Logo](https://zanduino.github.io/Images/zanshinkanjitiny.gif) <img src="https://zanduino.github.io/Images/zanshintext.gif" width="75"/>](https://zanduino.github.io)

@@ -72,7 +72,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 @section author Author
 
-Written by Arnd\@SV-Zanshin
+Written by Arnd <Arnd@Zanduino.Com> at https://www.github.com/SV-Zanshin
 
 @section versions Changelog
 

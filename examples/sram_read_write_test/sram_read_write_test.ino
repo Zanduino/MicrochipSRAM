@@ -39,7 +39,7 @@ with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 @section sram_read_write_testauthor Author
 
-Written by Arnd\@SV-Zanshin
+Written by Arnd <Arnd@Zanduino.Com> at https://www.github.com/SV-Zanshin
 
 @section sram_read_write_testversions Changelog
 
