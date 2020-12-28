@@ -5,42 +5,35 @@
 
  @section MCP7940_intro_section Description
 
-Class definition header for the MicrochipSRAM class. This library allows reading
-from and writing to any of the Microchip family of Serial SRAM and Serial NVSRAM
-memory chips. The list can be found at Microchip's page at
-http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview.
-\n\n
+Class definition header for the MicrochipSRAM class. This library allows reading from and writing to
+any of the Microchip family of Serial SRAM and Serial NVSRAM memory chips. The list can be found at 
+Microchip's page at http://www.microchip.com/design-centers/memory/serial-sram-serial-nvsram/overview. \n\n
 
-The most recent version of the library is at
-https://github.com/Zanduino/MicrochipSRAM/archive/master.zip, the library and
-sample program descriptions can be found at
-https://github.com/Zanduino/MicrochipSRAM \n\n
+The most recent version of the library is at 
+https://github.com/Zanduino/MicrochipSRAM/archive/master.zip, the library and sample program 
+descriptions can be found at https://github.com/Zanduino/MicrochipSRAM \n\n
 
-At the time of coding this library, the following memories can be used: 23x640
-(64Kbit), 23x256 (256Kbit), 23x512 (512Kbit), 23xx1024 (1Mbit), 23LCV512
-(512Kbit) and 23LCV1024 (1Mbit).\n\n
+At the time of coding this library, the following memories can be used: 23x640 (64Kbit), 23x256 
+(256Kbit), 23x512 (512Kbit), 23xx1024 (1Mbit), 23LCV512 (512Kbit) and 23LCV1024 (1Mbit).\n\n
 
-The memory has 3 operating modes: byte, (32-byte) Page and sequential. All read
-or write command are started by pulling the SPI CS/SS pin low and sending 2 or 3
-address bytes (depending upon which memory is being used) and then either the
-data is sent to the memory or read from it starting at that address.  The
-default power-on mode is the byte mode, where only one byte is transmitted. The
-next mode, page, will transmit data within the 32-Byte page, wrapping around to
-the beginning of the page when the end is reached. The last mode, sequential,
-ignores page boundaries and reads/writes sequentially until the last memory
-position is reached, whereupon it wraps around to the beginning again.\n\n
+The memory has 3 operating modes: byte, (32-byte) Page and sequential. All read or write command are
+started by pulling the SPI CS/SS pin low and sending 2 or 3 address bytes (depending upon which 
+memory is being used) and then either the data is sent to the memory or read from it starting at 
+that address.  The default power-on mode is the byte mode, where only one byte is transmitted. The
+next mode, page, will transmit data within the 32-Byte page, wrapping around to the beginning of the
+page when the end is reached. The last mode, sequential, ignores page boundaries and reads/writes 
+sequentially until the last memory position is reached, whereupon it wraps around to the beginning 
+again.\n\n
 
-This library switches the memory to use sequential mode in order to simplify and
-speed up data transfer\n\n
+This library switches the memory to use sequential mode in order to simplify and speed up data transfer\n\n
 
-Instantiating the class involves turning on SPI for the CS/SS pin passed in, and
-then performing some read and write operations to determine which memory is
-actually being used. First, a test to see whether 2 or 3 address bytes are used.
-Only the 1Mbit chips use 3 address bytes, but if 2 address bytes are in use then
-two bytes are written to the last address, and if the first byte of the chip has
-a changed value then we know we've gotten a wraparound and have determined the
-memory size. If the first byte hasn't changed, then the actual memory has to be
-a larger one, and the next possible size is tested.
+Instantiating the class involves turning on SPI for the CS/SS pin passed in, and then performing 
+some read and write operations to determine which memory is actually being used. First, a test to 
+see whether 2 or 3 address bytes are used. Only the 1Mbit chips use 3 address bytes, but if 2 
+address bytes are in use then two bytes are written to the last address, and if the first byte of
+the chip has a changed value then we know we've gotten a wraparound and have determined the memory 
+size. If the first byte hasn't changed, then the actual memory has to be a larger one, and the next 
+possible size is tested.
 
 @section doxygen configuration
 This library is built with the standard "Doxyfile", which is located at
@@ -48,9 +41,9 @@ https://github.com/Zanduino/Common/blob/main/Doxygen. As described on that page,
 environment variables used, and these are set in the project's actions file, located at
 https://github.com/Zanduino/MicrochipSRAM/blob/master/.github/workflows/ci-doxygen.yml
 Edit this file and set the 5 variables: PRETTYNAME, PROJECT_NAME, PROJECT_NUMBER, PROJECT_BRIEF and
-PROJECT_LOGO so that these values are used in the doxygen documentation.
-The local copy of the doxyfile should be in the project's root directory in order to do local
-doxygen testing, but the file is ignored on upload to GitHub.
+PROJECT_LOGO so that these values are used in the doxygen documentation. The local copy of the 
+doxyfile should be in the project's root directory in order to do local doxygen testing, but the 
+file is ignored on upload to GitHub.
 
 @section clang-format
 Part of the GitHub actions for CI is running every source file through "clang-format" to ensure
@@ -61,14 +54,13 @@ committing and uploading.
 
 @section MicroChipSRAMlicense GNU General Public License v3.0
 
-This program is free software: you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later
-version. This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-details. You should have received a copy of the GNU General Public License along
-with this program.  If not, see <http://www.gnu.org/licenses/>.
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU 
+General Public License as published by the Free Software Foundation, either version 3 of the 
+License, or (at your option) any later version. This program is distributed in the hope that it will
+be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have 
+received a copy of the GNU General Public License along with this program.  If not, see 
+<http://www.gnu.org/licenses/>.
 
 @section author Author
 
@@ -76,17 +68,18 @@ Written by Arnd <Arnd@Zanduino.Com> at https://www.github.com/SV-Zanshin
 
 @section versions Changelog
 
-Version| Date       | Developer  | Comments
------- | ---------- | ---------- | --------
-1.0.6  | 2020-12-02 | SV-Zanshin | Reformatted for clang-format
-1.0.5  | 2019-05-28 | SV-Zanshin | Issue #2 - corrected misleading comments
-1.0.5  | 2019-01-26 | SV-Zanshin | Issue #1 - converted documentation to doxygen
-1.0.4  | 2018-06-25 | SV-Zanshin | Minor changes
-1.0.3  | 2017-07-31 | SV-Zanshin | Only function prototypes may contain default values / optional parameter declarations, functions may not as this can cause compiler errors
-1.0.2  | 2016-11-20 | SV-Zanshin | Constructor uses CS/SS pin, made "SRAMBytes" public
-1.0.1  | 2016-11-19 | SV-Zanshin | Added method "clearMemory"
-1.0.0  | 2016-11-19 | SV-Zanshin | Cleaned up, https://github.com/Zanduino/MicrochipSRAM
-1.0.b1 | 2016-11-16 | SV-Zanshin | Created class
+| Version| Date       | Developer  | Comments                                                      |
+| ------ | ---------- | ---------- | ------------------------------------------------------------- |
+| 1.0.6  | 2020-12-28 | SV-Zanshin | Reformatted again                                             |
+| 1.0.6  | 2020-12-02 | SV-Zanshin | Reformatted for clang-format                                  |
+| 1.0.5  | 2019-05-28 | SV-Zanshin | Issue #2 - corrected misleading comments                      |
+| 1.0.5  | 2019-01-26 | SV-Zanshin | Issue #1 - converted documentation to doxygen                 |
+| 1.0.4  | 2018-06-25 | SV-Zanshin | Minor changes                                                 |
+| 1.0.3  | 2017-07-31 | SV-Zanshin | Only function prototypes may contain default values / optional parameter declarations, functions may not as this can cause compiler errors |
+| 1.0.2  | 2016-11-20 | SV-Zanshin | Constructor uses CS/SS pin, made "SRAMBytes" public           |
+| 1.0.1  | 2016-11-19 | SV-Zanshin | Added method "clearMemory"                                    |
+| 1.0.0  | 2016-11-19 | SV-Zanshin | Cleaned up, https://github.com/Zanduino/MicrochipSRAM         |
+| 1.0.b1 | 2016-11-16 | SV-Zanshin | Created class                                                 |
 */
 // clang-format on
 #include "Arduino.h"  // Arduino data type definitions
