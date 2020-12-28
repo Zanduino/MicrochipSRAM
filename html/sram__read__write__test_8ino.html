@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('sram__read__write__test_8ino.html','')
 <div class="title">sram_read_write_test.ino File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="_microchip_s_r_a_m_8h_source.html">MicrochipSRAM.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_microchip_s_r_a_m_8h_source.html">MicrochipSRAM.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -133,9 +133,9 @@ Description</h1>
 <br />
  There are only 3 public methods in the library:<br />
 <br />
- ** [optional uint32 return address] get ( address, {variable} )<br />
- [optional uint32 return address] put ( address, {variable} )<br />
- fillMemory ( address, {variable} )<br />
+ ** [optional uint32 return address] get(address, {variable} )<br />
+ [optional uint32 return address] put (address, {variable} )<br />
+fillMemory ( address, {variable} )<br />
 <br />
  If the address is higher than the actual amount of memory bytes availabe it automatically overflows and starts back at the beginning of memory, i.e. a 256kbit chip (23x256) stores 32768 bytes. If one puts 2 bytes starting at 32767 then byte 0 of the array is overwritten. Get and Put will word wrap from the end to the beginning.<br />
 <br />
@@ -151,6 +151,8 @@ Changelog</h1>
 <table class="doxtable">
 <tr>
 <th>Version</th><th>Date </th><th>Developer </th><th>Comments  </th></tr>
+<tr>
+<td>1.0.3 </td><td>2020-12-28 </td><td>SV-Zanshin </td><td>Reformatted again </td></tr>
 <tr>
 <td>1.0.2 </td><td>2020-12-02 </td><td>SV-Zanshin </td><td>Reformatted with clang-format </td></tr>
 <tr>
@@ -176,7 +178,7 @@ Changelog</h1>
       </table>
 </div><div class="memdoc">
 <p>Arduino method for the main program loop</p>
-<p>This is the main program for the Arduino IDE, it is an infinite loop and keeps on repeating. </p><dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
+<p>Main program for the Arduino IDE, it is an infinite loop and keeps on repeating </p><dl class="section return"><dt>Returns</dt><dd>void</dd></dl>
 
 </div>
 </div>
